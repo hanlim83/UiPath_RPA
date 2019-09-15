@@ -1439,15 +1439,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\winst\\.nuget\\packages\\": {}
+    "C:\\Users\\hanse\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "RPA-Project",
       "projectName": "RPA-Project",
-      "projectPath": "C:\\Users\\winst\\OneDrive\\Documents\\GitHub\\UiPath_RPA\\.local",
-      "packagesPath": "C:\\Users\\winst\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\winst\\OneDrive\\Documents\\GitHub\\UiPath_RPA\\.local"
+      "projectPath": "C:\\Users\\hanse\\Documents\\GitHub\\UiPath_RPA\\.local",
+      "packagesPath": "C:\\Users\\hanse\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\hanse\\Documents\\GitHub\\UiPath_RPA\\.local"
     },
     "frameworks": {
       "net461": {

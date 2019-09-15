@@ -1,4 +1,4 @@
-Hi,
+Hi {0},
 
 There were some issues in processing your information. Please provide the following information in the format:
 
@@ -14,7 +14,7 @@ Course group:
 Please also re-submit your supporting documents as well.
 
 
-If you must know, the reason your application was rejected is because: {0}.
+The reason your application was rejected is because: {1}
 
 Cheers,
 UiPath Robot
