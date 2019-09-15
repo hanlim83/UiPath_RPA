@@ -69,12 +69,12 @@
     <FlowStep x:Name="__ReferenceID8">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">230,207</av:Point>
+          <av:Point x:Key="ShapeLocation">200,207</av:Point>
           <av:Size x:Key="ShapeSize">200,66</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">300,281.6 300,334.4</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">300,273 300,334.4</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Read PDF Files" sap:VirtualizedContainerService.HintSize="749,2088" sap2010:WorkflowViewState.IdRef="Sequence_1">
+      <Sequence DisplayName="Read PDF Files" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_1">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:String" Name="outputPDFText" />
           <Variable x:TypeArguments="x:String" Name="applicationReplaceString" />
@@ -90,20 +90,20 @@
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="707,1073" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Directory.GetFiles(&quot;.\applications&quot;)]">
+        <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="562,826" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[Directory.GetFiles(&quot;.\applications&quot;)]">
           <ui:ForEach.Body>
             <ActivityAction x:TypeArguments="x:Object">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="671,939" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="526,692" sap2010:WorkflowViewState.IdRef="Sequence_5">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:ReadPDFText DisplayName="Read PDF Text" FileName="[item.ToString]" sap:VirtualizedContainerService.HintSize="629,59" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" Text="[outputPDFText]" />
-                <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="629,191" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                <ui:ReadPDFText DisplayName="Read PDF Text" FileName="[item.ToString]" sap:VirtualizedContainerService.HintSize="484,59" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Range="All" Text="[outputPDFText]" />
+                <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="484,191" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
                   <ui:MultipleAssign.AssignOperations>
                     <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                       <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -141,35 +141,37 @@
                     </scg:List>
                   </ui:MultipleAssign.AssignOperations>
                 </ui:MultipleAssign>
-                <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="629,59" sap2010:WorkflowViewState.IdRef="MessageBox_3" Text="[applicationArrayString(3).ToString]" TopMost="True" />
-                <If Condition="[applicationArrayString(3).ToString.Equals(&quot; &quot;)]" sap:VirtualizedContainerService.HintSize="629,356" sap2010:WorkflowViewState.IdRef="If_5">
+                <If Condition="[applicationArrayString(3).ToString.Equals(&quot;@&quot;)]" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_5">
                   <If.Else>
-                    <If Condition="[applicationArrayString(3).ToString.Contains(&quot;@&quot;)]" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_4">
-                      <If.Else>
-                        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;GOT EMPTY LEH&quot;]" TopMost="True" />
-                      </If.Else>
-                    </If>
+                    <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[applicationArrayString(3)]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">NULL</InArgument>
+                      </Assign.Value>
+                    </Assign>
                   </If.Else>
                 </If>
-                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{applicationArrayString(1),applicationArrayString(2),applicationArrayString(3),applicationArrayString(4),applicationArrayString(5),applicationArrayString(6),applicationArrayString(7),applicationGroupArray(1),&quot;False&quot;,&quot;&quot;}]" DataTable="[submittedApplicationsDataTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="629,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{applicationArrayString(1),applicationArrayString(2),applicationArrayString(3),applicationArrayString(4),applicationArrayString(5),applicationArrayString(6),applicationArrayString(7),applicationGroupArray(1),&quot;False&quot;,&quot;&quot;}]" DataTable="[submittedApplicationsDataTable]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
               </Sequence>
             </ActivityAction>
           </ui:ForEach.Body>
         </ui:ForEach>
-        <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="707,883" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Directory.GetFiles(&quot;.\scannedDocs&quot;)]">
+        <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="562,536" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[Directory.GetFiles(&quot;.\scannedDocs&quot;)]">
           <ui:ForEach.Body>
             <ActivityAction x:TypeArguments="x:Object">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="x:Object" Name="item" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,749" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476,402" sap2010:WorkflowViewState.IdRef="Sequence_7">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:StartProcess WorkingDirectory="{x:Null}" Arguments="[item.ToString]" DisplayName="Start Process" FileName="C:\Program Files (x86)\Adobe\Acrobat Reader DC\Reader\AcroRd32.exe" sap:VirtualizedContainerService.HintSize="434,87" sap2010:WorkflowViewState.IdRef="StartProcess_1" />
-                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="434,530" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="434,183" sap2010:WorkflowViewState.IdRef="TryCatch_1">
                   <TryCatch.Try>
                     <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window 'AcroRd32.exe S1122334A....'" sap:VirtualizedContainerService.HintSize="434,1355" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="9dd274770c7f8b4dcd4646b5d61f3a9d" Selector="&lt;wnd app='acrord32.exe' cls='AcrobatSDIWindow' title='*.pdf - Adobe Acrobat Reader DC' /&gt;">
                       <ui:WindowScope.Body>
@@ -304,10 +306,10 @@
                     </ui:WindowScope>
                   </TryCatch.Try>
                   <TryCatch.Catches>
-                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,368" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                    <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
@@ -360,7 +362,7 @@
               <av:PointCollection x:Key="ConnectorLocation">300,385.4 300,437.2</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Flowchart DisplayName="Check Details" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="Flowchart_2">
+          <Flowchart DisplayName="Check Details" sap:VirtualizedContainerService.HintSize="643,636" sap2010:WorkflowViewState.IdRef="Flowchart_2">
             <Flowchart.Variables>
               <Variable x:TypeArguments="sd1:DataRow[]" Name="matchedPassport" />
             </Flowchart.Variables>
@@ -444,31 +446,32 @@
                           <av:Size x:Key="ShapeSize">200,51</av:Size>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[submittedApplicationsDataTable]" DisplayName="Completion Check" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                      <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[submittedApplicationsDataTable]" DisplayName="Completion Check" sap:VirtualizedContainerService.HintSize="758,784" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
                         <ui:ForEachRow.Body>
                           <ActivityAction x:TypeArguments="sd1:DataRow">
                             <ActivityAction.Argument>
                               <DelegateInArgument x:TypeArguments="sd1:DataRow" Name="application" />
                             </ActivityAction.Argument>
-                            <Flowchart sap:VirtualizedContainerService.HintSize="200,52.8" sap2010:WorkflowViewState.IdRef="Flowchart_3">
+                            <Flowchart sap:VirtualizedContainerService.HintSize="708,636" sap2010:WorkflowViewState.IdRef="Flowchart_3">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
-                                  <av:Size x:Key="ShapeSize">60,75.2</av:Size>
+                                  <av:Size x:Key="ShapeSize">60,75</av:Size>
                                   <av:PointCollection x:Key="ConnectorLocation">300,77.7 300,126.4</av:PointCollection>
                                   <x:Double x:Key="Width">673.6</x:Double>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                               <Flowchart.StartNode>
                                 <x:Reference>__ReferenceID2</x:Reference>
                               </Flowchart.StartNode>
-                              <FlowDecision x:Name="__ReferenceID2" Condition="[application(&quot;Name&quot;).ToString.Equals(&quot; &quot;) Or application(&quot;Contact number&quot;).ToString.Equals(&quot; &quot;) Or application(&quot;Email&quot;).ToString.Equals(&quot; &quot;) Or application(&quot;Address&quot;).ToString.Equals(&quot; &quot;) Or application(&quot;NRIC&quot;).ToString.Equals(&quot; &quot;) Or application(&quot;Passport Number&quot;).ToString.Equals(&quot; &quot;) Or application(&quot;Course&quot;).ToString.Equals(&quot; &quot;) Or application(&quot;Course group&quot;).ToString.Equals(&quot; &quot;)]" DisplayName="Check For Empty Data" sap:VirtualizedContainerService.HintSize="122.4,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+                              <FlowDecision x:Name="__ReferenceID2" Condition="[application(&quot;Name&quot;).ToString.Equals(&quot; &quot;) Or application(&quot;Contact number&quot;).ToString.Equals(&quot; &quot;) Or application(&quot;Email&quot;).ToString.Equals(&quot;NULL&quot;) Or application(&quot;Address&quot;).ToString.Equals(&quot; &quot;) Or application(&quot;NRIC&quot;).ToString.Equals(&quot; &quot;) Or application(&quot;Passport Number&quot;).ToString.Equals(&quot; &quot;) Or application(&quot;Course&quot;).ToString.Equals(&quot; &quot;) Or application(&quot;Course group&quot;).ToString.Equals(&quot; &quot;)]" DisplayName="Check For Empty Data" sap:VirtualizedContainerService.HintSize="123,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <av:Point x:Key="ShapeLocation">238.8,126.4</av:Point>
-                                    <av:Size x:Key="ShapeSize">122.4,87.2</av:Size>
+                                    <av:Size x:Key="ShapeSize">123,87</av:Size>
                                     <av:PointCollection x:Key="TrueConnector">238.8,170 140,170 140,260</av:PointCollection>
                                     <av:PointCollection x:Key="FalseConnector">361.2,170 411.2,170</av:PointCollection>
                                   </scg:Dictionary>
@@ -478,10 +481,10 @@
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <av:Point x:Key="ShapeLocation">8.80000000000001,260</av:Point>
-                                        <av:Size x:Key="ShapeSize">262.4,60</av:Size>
+                                        <av:Size x:Key="ShapeSize">262,60</av:Size>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                    <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_6">
                                       <Assign.To>
                                         <OutArgument x:TypeArguments="x:Object">[application("VaildationFailedReason")]</OutArgument>
                                       </Assign.To>
@@ -501,10 +504,10 @@
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <av:Point x:Key="ShapeLocation">411.2,140</av:Point>
-                                        <av:Size x:Key="ShapeSize">262.4,60</av:Size>
+                                        <av:Size x:Key="ShapeSize">262,60</av:Size>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <Assign sap:VirtualizedContainerService.HintSize="262.4,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                    <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_7">
                                       <Assign.To>
                                         <OutArgument x:TypeArguments="x:Object">[application("Vaildation")]</OutArgument>
                                       </Assign.To>
@@ -647,7 +650,7 @@
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">200,117.7</av:Point>
           <av:Size x:Key="ShapeSize">200,66</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">300,183.7 300,215.6</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">300,183.7 300,207</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <Sequence DisplayName="Creation of Data Tables" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_6">
